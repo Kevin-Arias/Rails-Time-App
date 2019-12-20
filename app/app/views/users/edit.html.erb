@@ -1,0 +1,38 @@
+<div class="limiter">
+	<div class="container-login100">
+		<div class="wrap-login100 p-t-85 p-b-20">
+			<div class="form-group">
+				<form action="/users/<%=@user.id%>" method="post">
+					<span class="login100-form-title p-b-70">
+						Edit Information
+					</span>
+					<br>
+					<input type="hidden" name="_method" value="patch">
+					<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+					<% if flash[:errors] %>
+						<h4 class="text-danger">Please input all fields correctly.</h4>
+					<%end%>
+					<div class="wrap-input100 validate-input m-t-85 m-b-35">
+						<%= text_field(:user, :first_name, class: "input100") %>
+						<span class="focus-input100" data-placeholder=""></span>
+					</div>
+					<div class="wrap-input100 validate-input m-t-85 m-b-35">
+						<%= text_field(:user, :last_name, class: "input100") %>
+						<span class="focus-input100" data-placeholder=""></span>
+					</div>
+					<br>
+					<br>
+					<%= submit_tag "UPDATE", class: "login100-form-btn"%>
+					<br>
+					<br>
+					<center><b style="font-size: 20px"><%= link_to "GO BACK", "/users/#{@user.id}" %></b></center>
+					
+				</form>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+

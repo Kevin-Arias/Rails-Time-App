@@ -1,0 +1,60 @@
+ <body>
+
+	
+	<div class="limiter main">
+		<div class="container-login100">
+			<div class="wrap-login100 p-t-85 p-b-20">
+				<h2>New Member Registration</h2>
+				<br>
+				<br>
+				<%= form_for @user do |f| %>
+					<div class="form-group">
+						<% if flash[:errors] %>
+							<h4 class="text-danger">Please input all fields correctly.</h4>
+						<%end%>
+						<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter username">
+							<%= f.text_field :first_name, class: "input100", placeholder: "First Name" %>
+							<span class="focus-input100" data-placeholder=""></span>
+						</div>
+
+						<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter username">
+							<%= f.text_field :last_name, class: "input100", placeholder: "Last Name" %>
+							<span class="focus-input100" data-placeholder=""></span>
+						</div>
+
+						<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter username">
+							<%= f.email_field :email, class: "input100", placeholder: "Email" %>
+							<span class="focus-input100" data-placeholder=""></span>
+						</div>
+
+						<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter username">
+							<%= f.password_field :password, class: "input100", placeholder: "Password" %>
+							<span class="focus-input100" data-placeholder=""></span>
+						</div>
+
+						<div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate = "Enter username">
+							<%= f.password_field :password_confirmation, class: "input100", placeholder: "Password Confirmation" %>
+							<span class="focus-input100" data-placeholder=""></span>
+						</div>
+
+						<%= f.submit "REGISTER", class: "login100-form-btn"%>
+						<br>
+						<br>
+						<center><b style="font-size: 20px"><%= link_to "GO BACK", root_path %></b></center>
+						
+					</div>
+					
+				<%end%>
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+
+
+	
+	
+</body>
+
+

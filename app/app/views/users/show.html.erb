@@ -1,0 +1,97 @@
+
+
+<p class="edit_and_out">
+	<%= link_to "EDIT INFO","/users/#{@user.id}/edit", class: "top_right"%> &nbsp; | &nbsp; <%= link_to "LOG OUT","/log_out", class: "top_right"%>
+</p>
+
+
+
+ <body>
+
+	<div class="limiter main">
+		<div class="container-login100">
+			<div class="wrap-login100_show p-t-85 p-b-20">
+				<center><h1 class="time" id="myH"></h1></center>
+				<center><h1 class="date" id="myDate"></h1></center>
+				<br>
+				<br>
+				<center><h1 class="date" id="myGreeting"></h1></center>	
+			</div>
+			
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+
+	<script>
+		var t = setInterval(realtimeClock, 500);
+		function realtimeClock() {
+			var rtClock = new Date();
+			var hours = rtClock.getHours();
+			var minutes = rtClock.getMinutes();
+			var seconds = rtClock.getSeconds();
+
+			var day = rtClock.getDay();
+			var month = rtClock.getMonth();
+			var number_day = rtClock.getDate();
+			var year = rtClock.getFullYear();
+
+
+			//Add AM and PM
+			var amPm = (hours < 12) ? "AM" : "PM";
+
+			var greeting;
+			var name = '<%=@user.first_name%>';
+			if (hours >= 5 && hours < 12) {
+				greeting = "Good Morning, " + name;
+			} else if (hours >= 12 && hours < 17) {
+				greeting = "Good Afternoon, " + name;
+			} else {
+				greeting = "Good Evening, " + name;
+			}
+			//Cpnvert hours to component of 12
+			hours = (hours > 12) ? hours - 12 : hours;
+			
+
+			//Pad the hours, minutes, and seconds
+			hours = ("0" + hours).slice(-2);
+			minutes = ("0" +minutes).slice(-2);
+			seconds = ("0"+seconds).slice(-2);
+
+			var weekday=new Array(7);
+			weekday[0]="Monday";
+			weekday[1]="Tuesday";
+			weekday[2]="Wednesday";
+			weekday[3]="Thursday";
+			weekday[4]="Friday";
+			weekday[5]="Saturday";
+			weekday[6]="Sunday";
+
+			var month_list=new Array(12);
+			month_list[0]="January";
+			month_list[1]="February";
+			month_list[2]="March";
+			month_list[3]="April";
+			month_list[4]="May";
+			month_list[5]="June";
+			month_list[6]="July";
+			month_list[7]="August";
+			month_list[8]="September";
+			month_list[9]="October";
+			month_list[10]="Novemeber";
+			month_list[11]="December";
+			
+
+			//Display the clock
+			document.getElementById('myH').innerHTML = hours + ":" + minutes + ":" + seconds + " " + amPm;
+			document.getElementById('myDate').innerHTML =  weekday[day-1] + "  " + month_list[month] + "  " +number_day+ ",  " +year;
+			document.getElementById('myGreeting').innerHTML =  greeting;
+			
+			
+		}
+		
+	</script>
+
+</body>
+
